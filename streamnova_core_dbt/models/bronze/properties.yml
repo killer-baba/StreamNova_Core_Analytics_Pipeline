@@ -1,0 +1,71 @@
+version: 2
+
+models:
+  - name: bronze_customers #  Must match the filename of a model -- including case sensitivity.
+    description: "This is the customers table in the bronze layer. It contains raw data ingested from the source system."
+    columns:
+        - name: customer_id
+          description: "The unique identifier for each customer."
+          data_tests:
+             - not_null
+             - unique
+        - name: first_name
+          description: "The customer's first name."
+        - name: last_name
+          description: "The customer's last name."
+        - name: email
+          description: "The customer's email address."
+        - name: signup_date
+          description: "The date when the customer signed up."
+
+  - name: bronze_payments # Must match the filename of a model -- including case sensitivity.
+    description: "This is the payments table in the bronze layer. It contains raw data ingested from the source system."
+    columns:
+        - name: transaction_id
+          description: "The unique identifier for each payment."
+          data_tests:
+              - not_null
+        - name: subscription_id
+          description: "The unique identifier for the subscription associated with the payment."
+        - name: customer_id
+          description: "The unique identifier for the customer who made the payment."
+        - name: amount
+          description: "The amount of the payment."
+        - name: payment_date
+          description: "The date when the payment was made."
+
+  - name: bronze_subscriptions # Must match the filename of a model -- including case sensitivity.
+    description: "This is the subscriptions table in the bronze layer. It contains raw data ingested from the source system."
+    columns:
+        - name: subscription_id
+          description: "The unique identifier for each subscription."
+          data_tests:
+              - not_null
+              - unique
+        - name: customer_id
+          description: "The unique identifier for the customer who owns the subscription."
+        - name: plan_type
+          description: "The subscription plan (e.g., Basic, Pro, Enterprise)."
+        - name: status
+          description: "The current status of the subscription (e.g., Active, Canceled, Past Due)."
+        - name: start_date
+          description: "The date when the subscription started."
+        - name: end_date
+          description: "The date when the subscription ended (if applicable)."
+
+  - name: bronze_content_consumption # Must match the filename of a model -- including case sensitivity.
+    description: "This is the content consumption table in the bronze layer. It contains raw data ingested from the source system."
+    columns:
+        - name: event_id
+          description: "The unique identifier for each content consumption event."
+          data_tests:
+             - not_null
+             - unique
+        - name: customer_id
+          description: "The unique identifier for the customer who consumed the content."
+        - name: event_timestamp
+          description: "The timestamp when the content was consumed."
+        - name: event_type
+          description: "The type of content consumption event (e.g., play, pause, stop)"
+        - name: device_metadata
+          description: "Metadata about the device used for content consumption (e.g., device type, operating system)."
