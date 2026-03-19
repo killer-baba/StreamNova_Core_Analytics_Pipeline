@@ -1,7 +1,7 @@
 streamnova_core_dbt:
   outputs:
     dev:
-      catalog: streamnove_data_mesh
+      catalog: streamnova_data_mesh
       host: dbc-08391ee7-7d29.cloud.databricks.com
       http_path: /sql/1.0/warehouses/57caa47e788750dc
       schema: default

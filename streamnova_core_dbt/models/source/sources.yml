@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: source
+    database: '{{ target.database }}'  
+    schema: source  
+    tables:
+      - name: content_consumption
+      - name: customers
+      - name: payments
+      - name: subscriptions
