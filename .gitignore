@@ -11,4 +11,4 @@ wheels/
 streamnova_core_dbt/profiles.yml
 target/
 dbt_packages/
-logs/gi
+logs/
